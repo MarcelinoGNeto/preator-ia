@@ -10,8 +10,8 @@ interface ClientFormFieldsProps {
   register: UseFormRegister<ClientFormData>;
   errors: FieldErrors<ClientFormData>;
   defaultValues?: {
-    id: string;
-    user_id: string;
+    id?: string;
+    user_id?: string;
     name: string;
     contact_info: string;
     address: string;

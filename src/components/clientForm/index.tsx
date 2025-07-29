@@ -29,12 +29,10 @@ export default function ClientForm() {
 
   const { register, handleSubmit, reset, formState } = methods;
   const { isValid } = formState;
-  console.log("Form State:", formState.touchedFields);
 
   const { url } = dataNavigation.navMain[1];
 
   const onSubmit = (data: ClientFormData) => {
-    console.log("Submitted Data:", data);
     if (!isValid) {
       toast.error("Por favor, preencha todos os campos corretamente.");
       return;

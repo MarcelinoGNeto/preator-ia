@@ -8,8 +8,8 @@ export const documentSchema = z.object({
 });
 
 export const clientSchema = z.object({
-  user_id: z.string().uuid("ID de usuário inválido"),
-  id: z.string().uuid("ID inválido"),
+  user_id: z.string().uuid("ID de usuário inválido").optional(),
+  id: z.string().uuid("ID inválido").optional(),
   name: z.string().min(1, "Nome é obrigatório"),
   cpf: z.string().min(11, "CPF inválido").max(14, "CPF inválido"),
   contact_info: z.string().min(1, "Informações de contato são obrigatórias"),

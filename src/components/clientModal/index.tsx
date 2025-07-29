@@ -55,7 +55,7 @@ export default function ClientModal({ isOpen, onClose, clientData }: ClientModal
         description: `Nome: ${data.name}`,
       });
     } else {
-      saveClient(data); // Função para salvar o novo cliente
+      saveClient(data);
       toast.success("Cliente salvo com sucesso!", {
         description: `Nome: ${data.name}`,
       });
