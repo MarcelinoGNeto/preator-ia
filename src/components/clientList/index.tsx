@@ -22,9 +22,9 @@ export default function ClientList() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           {filteredClients.map((client) => (
-            <Card key={client.id} className="relative p-4">
+            <Card key={client.client_id} className="relative p-4">
             <DropdownMenuClient
-              clientId={client.id || ""}
+              clientId={client.client_id || ""}
               onDelete={() => {
                 console.log("Remover cliente:", client.name);
               }}
@@ -32,7 +32,7 @@ export default function ClientList() {
           
             <div 
               className="flex flex-col items-center gap-4 cursor-pointer"
-              onClick={() => router.push(`/logged/clients/${client.id}/client`)}
+              onClick={() => router.push(`/logged/clients/${client.client_id}/client`)}
             >
               <Avatar className="w-20 h-20">
                 <AvatarFallback className="text-2xl font-medium">

@@ -16,7 +16,7 @@ export default function ClientPage() {
   const router = useRouter();
   const { id } = useParams();
   const processData = getProcesses();
-  console.log("Processos: ", processData);
+  
   return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 px-4 lg:px-6">
       <Card 

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ClientFormData, clientSchema } from "@/schemas/clientSchemas";
 import { FormProvider, useForm } from "react-hook-form";
 
-export default function CadastroPage() {
+export default function EditPage() {
   const methods = useForm<ClientFormData>({
     resolver: zodResolver(clientSchema),
     defaultValues: {

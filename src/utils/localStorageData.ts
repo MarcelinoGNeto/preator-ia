@@ -9,7 +9,7 @@ export function saveClient(client: ClientFormData) {
 export function updateClient(updatedClientData: ClientFormData) {
   const clients  = getClients();
   const updatedClients = clients.map((client: ClientFormData) =>
-    client.id === updatedClientData.id ? updatedClientData : client
+    client.client_id === updatedClientData.client_id ? updatedClientData : client
   );
   localStorage.setItem('clients', JSON.stringify(updatedClients));
 }
@@ -20,9 +20,9 @@ export function getClients(): ClientFormData[] {
   return data ? JSON.parse(data) : [];
 }
 
-export function getClientById(clientId: string): ClientFormData | undefined {
+export function getClientById(clientId: string) {
   const clients = getClients();
-  return clients.find((client) => client.id === clientId);
+  return clients.find((client) => client.client_id === clientId);
 }
 
 

@@ -22,7 +22,7 @@ export function SiteHeader() {
 
   const clientId = path.match(/\/clients\/([0-9a-fA-F-]{36})/)?.[1];
   const allClients = getClients();
-  const name = allClients.find(client => client.id === clientId)?.name;
+  const name = allClients.find(client => client.client_id === clientId)?.name;
 
   React.useEffect(() => {
     if (clientId) {

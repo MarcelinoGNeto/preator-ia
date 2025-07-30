@@ -1,28 +1,16 @@
 import {
   IconCamera,
-  IconChartBar,
   IconDashboard,
   IconDatabase,
   IconFileAi,
   IconFileDescription,
   IconFileWord,
-  IconFolder,
   IconHelp,
-  IconListDetails,
   IconReport,
   IconSearch,
   IconSettings,
   IconUsers,
 } from "@tabler/icons-react";
-
-const navigationRoutes = {
-  publicRoute: {
-    login: "/login",
-  },
-  privateRoute: {
-    smartDraft: "/logged/smart-draft",
-  },
-} as const;
 
 export const dataNavigation = {
   user: {
@@ -58,6 +46,10 @@ export const dataNavigation = {
     },
     {
       routeName: "client",
+      title: "Cliente",
+    },
+    {
+      routeName: "client-edit",
       title: "Cliente",
     },
     {

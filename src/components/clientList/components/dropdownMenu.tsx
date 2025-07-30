@@ -1,17 +1,15 @@
 "use client";
 
-import ClientModal from "@/components/clientModal";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { ClientFormData } from "@/schemas/clientSchemas";
-import { getClientById } from "@/utils/localStorageData";
+import { dataNavigation } from "@/utils/navigationRoutes";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { Edit, Trash } from "lucide-react";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface DropdownMenuClientProps {
   clientId: string;
@@ -20,19 +18,18 @@ interface DropdownMenuClientProps {
 
 export function DropdownMenuClient({ clientId, onDelete }: DropdownMenuClientProps) {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [clientData, setClientData] = useState<ClientFormData | null>(null)
+  const router = useRouter();
+  const { url } = dataNavigation.navMain[1];
 
-  const handleOpenModal = (clientId?: string) => {
-    if (clientId) {
-      // Se houver um clientId, estamos editando
-      const client = getClientById(clientId); // Pega os dados do cliente
-      if (client) {
-        setClientData(client); // Define os dados do cliente para edição
-      }
+  const handlClick = () => {
+    if (!clientId) {
+      router.push(url);
     }
-    setIsModalOpen(true); // Abre o modal
-  };
+    if (clientId) {
+      router.push(`${url}/${clientId}/client-edit`);
+    }
+  }
+
 
   return (
     <DropdownMenu>
@@ -42,7 +39,7 @@ export function DropdownMenuClient({ clientId, onDelete }: DropdownMenuClientPro
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
-        <DropdownMenuItem onClick={() => handleOpenModal(clientId)}>
+        <DropdownMenuItem onClick={handlClick}>
           <Edit className="mr-2 h-4 w-4" />
           Editar
         </DropdownMenuItem>
@@ -51,11 +48,6 @@ export function DropdownMenuClient({ clientId, onDelete }: DropdownMenuClientPro
           <span className="text-red-500">Remover</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
-      <ClientModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)} // Fecha o modal
-        clientData={clientData ?? undefined} // Passa os dados do cliente para edição
-      />
     </DropdownMenu>
   );
 }
